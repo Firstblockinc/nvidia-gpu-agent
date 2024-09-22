@@ -1,2 +1,3 @@
-# nvidia-gpu-exporter-python
-Exporter for Nvidia GPUs cross platform
+# nvidia-gpu-smnp-agent
+
+nvidia-gpu agent based on smnpV2 for gpu metrics
