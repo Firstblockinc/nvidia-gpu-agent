@@ -23,7 +23,6 @@ def get_gpu_info():
             }
             gpu_data.append(info)
 
-            logging.info(f"GPU {i}: {info}")
 
         return gpu_data
     except Exception as e:
