@@ -15,14 +15,19 @@ def get_gpu_info():
             handle = pynvml.nvmlDeviceGetHandleByIndex(i)
             memory_info = pynvml.nvmlDeviceGetMemoryInfo(handle)
 
+            # Convert VRAM values to MB
+            vram_used_mb = memory_info.used / (1024 ** 2)  
+            vram_free_mb = memory_info.free / (1024 ** 2) 
+            vram_total_mb = memory_info.total / (1024 ** 2) 
+
             info = {
                 'id': i,
                 'model': pynvml.nvmlDeviceGetName(handle),
                 'temperature': pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU),
                 'utilization': pynvml.nvmlDeviceGetUtilizationRates(handle).gpu,
-                'vram_used': pynvml.nvmlDeviceGetMemoryInfo(handle).used,
-                'vram_free': pynvml.nvmlDeviceGetMemoryInfo(handle).free,
-                'vram_total': pynvml.nvmlDeviceGetMemoryInfo(handle).total,
+                'vram_used': vram_used_mb,
+                'vram_free': vram_free_mb,
+                'vram_total': vram_total_mb,
                 'power_consumption': pynvml.nvmlDeviceGetPowerUsage(handle)
             }
             gpu_data.append(info)
