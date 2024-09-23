@@ -10,11 +10,11 @@ def get_gpu_info():
             handle = pynvml.nvmlDeviceGetHandleByIndex(i)
             info = {
                 'id': i,
-                'name': pynvml.nvmlDeviceGetName(handle).decode('utf-8'),
+                'model': pynvml.nvmlDeviceGetName(handle).decode('utf-8'),
                 'temperature': pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU),
                 'utilization': pynvml.nvmlDeviceGetUtilizationRates(handle).gpu,
                 'vram_used': pynvml.nvmlDeviceGetMemoryInfo(handle),
-                'consumption': pynvml.nvmlDeviceGetPowerUsage(handle)
+                'power_consumption': pynvml.nvmlDeviceGetPowerUsage(handle)
             }
             gpu_data.append(info)
 
