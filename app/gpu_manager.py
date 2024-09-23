@@ -17,9 +17,9 @@ def get_gpu_info():
 
             info = {
                 'id': i,
-                'model': pynvml.nvmlDeviceGetName(handle).decode('utf-8'),
+                'model': pynvml.nvmlDeviceGetName(handle),
                 'temperature': pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU),
-                'utilization': pynvml.nvmlDeviceGetUtilizationRates(handle).gpu,
+                #'utilization': pynvml.nvmlDeviceGetUtilizationRates(handle).gpu,
                 'vram_used': pynvml.nvmlDeviceGetMemoryInfo(handle).used,
                 'vram_free': pynvml.nvmlDeviceGetMemoryInfo(handle).free,
                 'vram_total': pynvml.nvmlDeviceGetMemoryInfo(handle).total,
